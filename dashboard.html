@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Learno - Dashboard</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Segoe UI", sans-serif;
+        background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+        min-height: 100vh;
+      }
+      .header {
+        background: linear-gradient(135deg, #10b981, #059669);
+        color: white;
+        padding: 20px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .welcome-section {
+        text-align: center;
+        padding: 50px 20px 40px;
+        background: white;
+        margin: 20px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 25px;
+      }
+      .card {
+        background: white;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 10px 25px rgba(16, 185, 129, 0.1);
+        transition: transform 0.3s;
+      }
+      .card:hover {
+        transform: translateY(-8px);
+      }
+      .btn {
+        background: #10b981;
+        color: white;
+        border: none;
+        padding: 14px 30px;
+        border-radius: 50px;
+        font-size: 16px;
+        cursor: pointer;
+        width: 100%;
+        margin-top: 15px;
+      }
+      .logout-btn {
+        background: #ef4444;
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 50px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <div>
+        <h1>🌱 Learno</h1>
+        <p>Sentiment Aware Adaptive Learning</p>
+      </div>
+      <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+
+    <div class="welcome-section">
+      <h2 id="welcomeText">Welcome back, Student! 👋</h2>
+      <p>Your learning experience is being adapted based on your emotions.</p>
+    </div>
+
+    <div class="container">
+      <div class="card">
+        <h3>📚 My Courses</h3>
+        <p>Browse and continue your courses</p>
+        <button class="btn" onclick="window.location.href = 'courses.html'">
+          View My Courses
+        </button>
+      </div>
+
+      <div class="card">
+        <h3>🎯 Continue Learning</h3>
+        <p>Database Systems - Lesson 3</p>
+        <button class="btn" onclick="window.location.href = 'learning.html'">
+          Continue Learning
+        </button>
+      </div>
+
+      <div class="card">
+        <h3>📝 Give Feedback</h3>
+        <p>Help us adapt your learning better</p>
+        <button class="btn" onclick="window.location.href = 'feedback.html'">
+          Give Feedback
+        </button>
+      </div>
+
+      <div class="card">
+        <h3>📊 View All Feedbacks</h3>
+        <p>See previous feedback submissions</p>
+        <button
+          class="btn"
+          onclick="window.location.href = 'view-feedback.html'"
+        >
+          View Feedbacks
+        </button>
+      </div>
+    </div>
+
+    <script>
+      window.addEventListener("load", () => {
+        const user = JSON.parse(localStorage.getItem("currentUser"));
+        if (user) {
+          document.getElementById("welcomeText").textContent =
+            `Welcome back, ${user.name}! 👋`;
+        }
+      });
+
+      function logout() {
+        if (confirm("Are you sure you want to logout?")) {
+          localStorage.removeItem("currentUser");
+          window.location.href = "landing.html";
+        }
+      }
+    </script>
+  </body>
+</html>

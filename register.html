@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Learno - Register</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="login-box">
+        <div class="header">
+          <h1>🌱 Learno</h1>
+          <p>Sentiment Aware Learning Platform</p>
+        </div>
+
+        <h2>Create Account</h2>
+        <p class="subtitle">Join thousands of smart learners</p>
+
+        <form id="registerForm">
+          <div class="input-group">
+            <label for="fullname">Full Name</label>
+            <input
+              type="text"
+              id="fullname"
+              placeholder="Enter your full name"
+              required
+            />
+            <span class="error" id="nameError"></span>
+          </div>
+
+          <div class="input-group">
+            <label for="email">Email Address</label>
+            <input
+              type="email"
+              id="email"
+              placeholder="student@learno.com"
+              required
+            />
+            <span class="error" id="emailError"></span>
+          </div>
+
+          <div class="input-group">
+            <label for="password">Password</label>
+            <div class="password-wrapper">
+              <input
+                type="password"
+                id="password"
+                placeholder="Create password"
+                required
+              />
+              <button type="button" id="togglePassword" class="toggle-btn">
+                👁️
+              </button>
+            </div>
+            <span class="error" id="passwordError"></span>
+          </div>
+
+          <button type="submit" id="registerBtn">Create Account</button>
+        </form>
+
+        <p class="signup">
+          Already have an account? <a href="index.html">Sign in</a>
+        </p>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

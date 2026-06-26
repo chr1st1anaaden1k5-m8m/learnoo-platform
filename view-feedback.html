@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Learno - All Feedbacks</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Segoe UI", sans-serif;
+        background: #f8fafc;
+        min-height: 100vh;
+      }
+      .header {
+        background: linear-gradient(135deg, #10b981, #059669);
+        color: white;
+        padding: 20px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .container {
+        max-width: 1100px;
+        margin: 30px auto;
+        padding: 20px;
+      }
+      .card {
+        background: white;
+        padding: 25px;
+        border-radius: 16px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        margin-bottom: 20px;
+      }
+      .feedback-item {
+        border-bottom: 1px solid #e2e8f0;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+      }
+      .feedback-item:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+      }
+      .emotion {
+        font-size: 28px;
+      }
+      .date {
+        font-size: 14px;
+        color: #64748b;
+      }
+      .rating {
+        color: #10b981;
+        font-size: 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <div>
+        <h1>🌱 Learno</h1>
+        <p>All Student Feedbacks</p>
+      </div>
+      <a href="dashboard.html" style="color: white; text-decoration: none"
+        >← Back to Dashboard</a
+      >
+    </div>
+
+    <div class="container">
+      <h2 style="margin-bottom: 20px; color: #065f46">Student Feedbacks</h2>
+      <div id="feedbackList"></div>
+    </div>
+
+    <script>
+      function loadFeedbacks() {
+        const feedbacks = JSON.parse(localStorage.getItem("feedbacks")) || [];
+        const container = document.getElementById("feedbackList");
+
+        if (feedbacks.length === 0) {
+          container.innerHTML =
+            "<p style='text-align:center; color:#666; padding:40px;'>No feedback submitted yet.</p>";
+          return;
+        }
+
+        let html = "";
+        feedbacks.reverse().forEach((fb) => {
+          html += `
+          <div class="card feedback-item">
+            <p><strong>${fb.user}</strong> • <span class="date">${fb.date}</span></p>
+            <p class="emotion">Emotion: ${fb.emotion}</p>
+            <p class="rating">Rating: ${"★".repeat(fb.rating)}</p>
+            ${fb.comment ? `<p><strong>Comment:</strong> ${fb.comment}</p>` : ""}
+          </div>
+        `;
+        });
+
+        container.innerHTML = html;
+      }
+
+      // Load feedbacks when page opens
+      window.onload = loadFeedbacks;
+    </script>
+  </body>
+</html>
+ 

@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Learno - Adaptive Learning Platform</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Segoe UI", system-ui, sans-serif;
+      }
+      .hero {
+        background: linear-gradient(135deg, #10b981, #059669);
+        color: white;
+        text-align: center;
+        padding: 140px 20px 100px;
+      }
+      .hero h1 {
+        font-size: 52px;
+        margin-bottom: 20px;
+      }
+      .hero p {
+        font-size: 22px;
+        max-width: 700px;
+        margin: 0 auto 40px;
+        opacity: 0.95;
+      }
+      .btn {
+        display: inline-block;
+        padding: 16px 42px;
+        margin: 10px;
+        border-radius: 50px;
+        font-size: 18px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: 0.3s;
+      }
+      .btn-primary {
+        background: white;
+        color: #059669;
+      }
+      .btn-primary:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+      .btn-secondary {
+        background: transparent;
+        color: white;
+        border: 2px solid white;
+      }
+      .features {
+        padding: 100px 20px;
+        background: #f8fafc;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .section-title {
+        text-align: center;
+        font-size: 36px;
+        margin-bottom: 60px;
+        color: #065f46;
+      }
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 30px;
+      }
+      .feature-card {
+        background: white;
+        padding: 40px 30px;
+        border-radius: 20px;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: 0.3s;
+      }
+      .feature-card:hover {
+        transform: translateY(-10px);
+      }
+      .emoji {
+        font-size: 55px;
+        margin-bottom: 20px;
+      }
+      .footer {
+        background: #065f46;
+        color: white;
+        text-align: center;
+        padding: 50px 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="hero">
+      <div class="container">
+        <h1>🌱 Learn Smarter with Learno</h1>
+        <p>
+          The Sentiment-Aware Adaptive Learning Platform that understands your
+          emotions and reduces learning frustration
+        </p>
+        <a href="register.html" class="btn btn-primary">Get Started Free</a>
+        <a href="index.html" class="btn btn-secondary">Login</a>
+      </div>
+    </section>
+
+    <section class="features">
+      <div class="container">
+        <h2 class="section-title">Why Students Love Learno</h2>
+
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="emoji">😊</div>
+            <h3>Sentiment Detection</h3>
+            <p>
+              Real-time emotion analysis that adapts lessons when you're
+              frustrated or confused.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="emoji">📈</div>
+            <h3>Adaptive Learning Path</h3>
+            <p>
+              Content automatically adjusts difficulty based on your feedback
+              and performance.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="emoji">📝</div>
+            <h3>Smart Feedback System</h3>
+            <p>
+              Instant intelligent responses that help improve your learning
+              experience.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>&copy; 2026 Learno - BTech Final Year Project</p>
+      <p>Making Learning Less Frustrating, One Emotion at a Time</p>
+    </footer>
+  </body>
+</html>

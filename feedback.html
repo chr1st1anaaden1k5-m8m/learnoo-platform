@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Learno - Feedback</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", sans-serif;
+        background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+        min-height: 100vh;
+      }
+
+      .header {
+        background: linear-gradient(135deg, #10b981, #059669);
+        color: white;
+        padding: 20px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .container {
+        max-width: 700px;
+        margin: 40px auto;
+        padding: 20px;
+      }
+
+      .feedback-box {
+        background: white;
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 15px 35px rgba(16, 185, 129, 0.15);
+      }
+
+      h2 {
+        text-align: center;
+        color: #065f46;
+        margin-bottom: 10px;
+      }
+
+      .subtitle {
+        text-align: center;
+        color: #4b5563;
+        margin-bottom: 30px;
+      }
+
+      .emotion-selection {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin: 30px 0;
+      }
+
+      .emotion {
+        font-size: 45px;
+        cursor: pointer;
+        padding: 15px;
+        border-radius: 15px;
+        transition: all 0.3s;
+      }
+
+      .emotion:hover,
+      .emotion.selected {
+        transform: scale(1.2);
+        background: #ecfdf5;
+      }
+
+      .input-group {
+        margin-bottom: 25px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: #065f46;
+      }
+
+      textarea {
+        width: 100%;
+        height: 150px;
+        padding: 15px;
+        border: 2px solid #a1a1aa;
+        border-radius: 12px;
+        font-size: 16px;
+        resize: vertical;
+      }
+
+      .rating {
+        display: flex;
+        gap: 10px;
+      }
+
+      .star {
+        font-size: 35px;
+        cursor: pointer;
+        color: #ddd;
+      }
+
+      .star.active {
+        color: #10b981;
+      }
+
+      button {
+        width: 100%;
+        padding: 16px;
+        background: #10b981;
+        color: white;
+        border: none;
+        border-radius: 50px;
+        font-size: 18px;
+        font-weight: 600;
+        cursor: pointer;
+        margin-top: 20px;
+      }
+
+      button:hover {
+        background: #059669;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <div>
+        <h1>🌱 Learno</h1>
+        <p>Help Us Improve Your Learning</p>
+      </div>
+      <a href="dashboard.html" style="color: white; text-decoration: none"
+        >← Back to Dashboard</a
+      >
+    </div>
+
+    <div class="container">
+      <div class="feedback-box">
+        <h2>How was your learning experience today?</h2>
+        <p class="subtitle">
+          Your feedback helps us adapt the platform to reduce frustration
+        </p>
+
+        <form id="feedbackForm">
+          <!-- Emotion Selection -->
+          <div class="input-group">
+            <label>How are you feeling right now?</label>
+            <div class="emotion-selection" id="emotions">
+              <span class="emotion" data-value="😊">😊</span>
+              <span class="emotion" data-value="😐">😐</span>
+              <span class="emotion" data-value="😕">😕</span>
+              <span class="emotion" data-value="😣">😣</span>
+              <span class="emotion" data-value="😞">😞</span>
+            </div>
+          </div>
+
+          <!-- Rating -->
+          <div class="input-group">
+            <label>How would you rate today's learning session?</label>
+            <div class="rating" id="stars">
+              <span class="star" data-value="1">★</span>
+              <span class="star" data-value="2">★</span>
+              <span class="star" data-value="3">★</span>
+              <span class="star" data-value="4">★</span>
+              <span class="star" data-value="5">★</span>
+            </div>
+          </div>
+
+          <!-- Comment -->
+          <div class="input-group">
+            <label>Tell us more about your experience (optional)</label>
+            <textarea
+              id="comment"
+              placeholder="What frustrated you? What did you enjoy?"
+            ></textarea>
+          </div>
+
+          <button type="submit">Submit Feedback</button>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      let selectedEmotion = "";
+      let selectedRating = 0;
+
+      // Emotion Selection
+      document.querySelectorAll(".emotion").forEach((emo) => {
+        emo.addEventListener("click", () => {
+          document
+            .querySelectorAll(".emotion")
+            .forEach((e) => e.classList.remove("selected"));
+          emo.classList.add("selected");
+          selectedEmotion = emo.getAttribute("data-value");
+        });
+      });
+
+      // Star Rating
+      document.querySelectorAll(".star").forEach((star) => {
+        star.addEventListener("click", () => {
+          selectedRating = parseInt(star.getAttribute("data-value"));
+          document.querySelectorAll(".star").forEach((s) => {
+            s.classList.toggle(
+              "active",
+              parseInt(s.getAttribute("data-value")) <= selectedRating,
+            );
+          });
+        });
+      });
+
+      // Form Submit
+      document
+        .getElementById("feedbackForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const comment = document.getElementById("comment").value.trim();
+
+          if (!selectedEmotion) {
+            alert("Please select an emotion 😊");
+            return;
+          }
+
+          if (selectedRating === 0) {
+            alert("Please give a rating");
+            return;
+          }
+
+          // Save feedback to Local Storage
+          const feedback = {
+            emotion: selectedEmotion,
+            rating: selectedRating,
+            comment: comment,
+            date: new Date().toLocaleString(),
+            user:
+              JSON.parse(localStorage.getItem("currentUser"))?.name ||
+              "Student",
+          };
+
+          let feedbacks = JSON.parse(localStorage.getItem("feedbacks")) || [];
+          feedbacks.push(feedback);
+          localStorage.setItem("feedbacks", JSON.stringify(feedbacks));
+
+          alert(
+            "✅ Thank you for your feedback!\n\nWe will use this to improve your learning experience.",
+          );
+
+          // Reset form
+          document.getElementById("feedbackForm").reset();
+          document
+            .querySelectorAll(".emotion")
+            .forEach((e) => e.classList.remove("selected"));
+          document
+            .querySelectorAll(".star")
+            .forEach((s) => s.classList.remove("active"));
+          selectedEmotion = "";
+          selectedRating = 0;
+        });
+    </script>
+  </body>
+</html>
