@@ -203,4 +203,64 @@ input:focus {
   margin: 15px 0;
   border: 2px solid #ddd;
   border-radius: 8px;
+}/* New Login Page Background - Different Green Shade */
+body {
+  background: linear-gradient(135deg, #0f766e 0%, #134e4a 100%);
+}
+
+/* Google Button */
+.google-btn {
+  width: 100%;
+  padding: 14px;
+  background: white;
+  border: 2px solid #4285f4;
+  color: #4285f4;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.google-btn:hover {
+  background: #f8f9fa;
+}
+
+/* Modern Forgot Password Modal */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.7);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 35px;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 420px;
+  position: relative;
+  text-align: center;
+}
+
+.close-modal {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 28px;
+  cursor: pointer;
+  color: #666;
+}
+
+.close-modal:hover {
+  color: #000;
 }

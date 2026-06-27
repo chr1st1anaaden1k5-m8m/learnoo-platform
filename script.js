@@ -85,4 +85,32 @@ sendResetBtn.addEventListener("click", () => {
 document.getElementById("googleLogin").addEventListener("click", () => {
   alert("🔵 Google Sign-In\n\n(This feature will work fully after backend integration)");
   // In future, we will connect real Google Auth here
+});// Forgot Password Modal
+const modal = document.getElementById("forgotModal");
+const forgotLink = document.getElementById("forgotPassword");
+const closeModal = document.getElementById("closeModal");
+const sendResetBtn = document.getElementById("sendResetBtn");
+
+forgotLink.addEventListener("click", (e) => {
+  e.preventDefault();
+  modal.style.display = "flex";
+});
+
+closeModal.addEventListener("click", () => {
+  modal.style.display = "none";
+});
+
+sendResetBtn.addEventListener("click", () => {
+  const email = document.getElementById("resetEmail").value.trim();
+  if (email) {
+    alert(`✅ A password reset link has been sent to ${email}`);
+    modal.style.display = "none";
+  } else {
+    alert("Please enter your email address");
+  }
+});
+
+// Google Login
+document.getElementById("googleLogin").addEventListener("click", () => {
+  alert("🔵 Google Sign In\n\nThis will be fully functional after backend integration.");
 });

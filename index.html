@@ -45,10 +45,11 @@
         <button type="submit" id="loginBtn">Sign In</button>
       </form>
 
-      <!-- Social Login -->
+      <!-- Google Login -->
       <div class="social-login">
         <button class="google-btn" id="googleLogin">
-          <span>🔵</span> Continue with Google
+          <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google" width="20">
+          Continue with Google
         </button>
       </div>
 
@@ -58,17 +59,17 @@
     </div>
   </div>
 
-  <!-- Forgot Password Modal -->
+  <!-- Modern Forgot Password Modal -->
   <div id="forgotModal" class="modal">
     <div class="modal-content">
-      <h3>Reset Your Password</h3>
-      <p>Enter your email and we'll send you a reset link.</p>
+      <span class="close-modal" id="closeModal">×</span>
+      <h3>Reset Password</h3>
+      <p>Enter your email address and we'll send you a link to reset your password.</p>
       <input type="email" id="resetEmail" placeholder="your@email.com" class="modal-input">
-      <button id="sendResetBtn" class="btn btn-success w-100">Send Reset Link</button>
-      <button id="closeModal" class="btn btn-secondary w-100 mt-2">Cancel</button>
+      <button id="sendResetBtn" class="btn btn-primary w-100">Send Reset Link</button>
     </div>
   </div>
 
   <script src="script.js"></script>
 </body>
-</html>     
+</html>
