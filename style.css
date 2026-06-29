@@ -263,4 +263,20 @@ body {
 
 .close-modal:hover {
   color: #000;
+}/* Olive Green Theme for Login Page */
+body {
+  background: linear-gradient(135deg, #556b2f 0%, #3f4a2e 100%);
+}
+
+.login-btn, #loginBtn {
+  background: #556b2f;
+}
+
+.login-btn:hover, #loginBtn:hover {
+  background: #3f4a2e;
+}
+
+.google-btn {
+  border-color: #556b2f;
+  color: #556b2f;
 }
